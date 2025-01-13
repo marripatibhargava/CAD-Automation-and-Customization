@@ -1,0 +1,22 @@
+Option Explicit
+
+' Creating variable for Solidworks application
+Dim swApp As SldWorks.SldWorks
+' Creating variable for Solidworks document
+Dim swDoc As SldWorks.ModelDoc2
+
+' Main function of our VBA program
+Sub main()
+
+    ' Setting Solidworks variable to Solidworks application
+    Set swApp = Application.SldWorks
+    
+    ' Creating string type variable for storing default part location
+    Dim defaultTemplate As String
+    ' Setting value of this string type variable to "Default part template"
+    defaultTemplate = swApp.GetUserPreferenceStringValue(swUserPreferenceStringValue_e.swDefaultTemplatePart)
+
+    ' Setting Solidworks document to new part document
+    Set swDoc = swApp.NewDocument(defaultTemplate, 0, 0, 0)
+
+End Sub
